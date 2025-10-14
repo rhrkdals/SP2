@@ -85,9 +85,10 @@ void loop() {
    float dist_median= getMedian(dis, N);
   
   
-
+  dist_filtered=dist_raw;
+  dist_prev=dist_raw
   // Modify the below line to implement the EMA equation
-  dist_ema = dist_filtered;
+  dist_ema = _EMA_ALPHA * dist_raw + (1.0 - _EMA_ALPHA) * dist_ema;
 
   // output the distance to the serial port
   Serial.print("Min:");    Serial.print(_DIST_MIN); 
@@ -127,4 +128,5 @@ float USS_measure(int TRIG, int ECHO)
   //        = 100,000 * 0.001 * 0.5 * 346
   //        = 17,300 mm  ==> 17.3m
 }
+
 
